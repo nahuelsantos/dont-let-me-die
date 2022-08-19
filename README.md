@@ -1,15 +1,23 @@
 # dont-let-me-die
-
-yarn init -y, for generating a package.json file by default
-
- yarn add eslint eslint-config-prettier prettier -D
+A kind of fancy CLI quiz game. Keep your pet alive as much as you can! 
 
 
-install eslint and prettier
- ./node_modules/.bin/eslint --init
+## Meet your new friend
+```
+npx dont-let-me-die
+```
 
-add dependencies
- yarn add chalk chalk-animation inquirer figlet nanospinner
+## Packages Used
+[chalk](https://github.com/chalk/chalk) | 
+[inquirer](https://github.com/SBoudrias/Inquirer.js) |
+[chalk-animation](https://github.com/bokub/chalk-animation) |
+[figlet](https://github.com/patorjk/figlet.js) |
+[nanospinner](https://github.com/usmanyunusov/nanospinner) |
+[node-emoji](https://github.com/omnidan/node-emoji)
 
+```sh
+yarn add chalk chalk-animation figlet inquirer nanospinner node-emoji
+```
 
- https://opentdb.com/
+## Questions 
+All the questinos come from [Open Trivia Database](https://opentdb.com/)

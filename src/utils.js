@@ -81,7 +81,7 @@ export const sleep = (ms = 500) =>
   new Promise((resolve, _reject) => setTimeout(resolve, ms));
 
 export const loadQuestions = async (difficulty = "easy") => {
-  return JSON.parse(await readFile("src/data/questions.json", "utf8")).results.filter(q => q.difficulty === difficulty);
+  return JSON.parse(await readFile("./src/data/questions.json", "utf8")).results.filter(q => q.difficulty === difficulty);
 }
 
 export const shuffle = (array) => {

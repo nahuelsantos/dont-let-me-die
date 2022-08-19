@@ -1,5 +1,5 @@
 import emoji from "node-emoji";
-import { readFile } from "fs/promises";
+import questions from "./data/questions.js";
 
 export const getVirtualPet = async () => {
   const virtualPets = [
@@ -81,7 +81,7 @@ export const sleep = (ms = 500) =>
   new Promise((resolve, _reject) => setTimeout(resolve, ms));
 
 export const loadQuestions = async (difficulty = "easy") => {
-  return JSON.parse(await readFile("./src/data/questions.json", "utf8")).results.filter(q => q.difficulty === difficulty);
+  return questions().results.filter(q => q.difficulty === difficulty);
 }
 
 export const shuffle = (array) => {

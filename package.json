@@ -1,19 +1,27 @@
 {
   "name": "dont-let-me-die",
-  "version": "0.0.1",
-  "description": "Keep your buddy alive!",
-  "main": "index.js",
+  "version": "0.0.2",
+  "description": "Keep your buddy alive by answering as many questions as you can!",
+  "main": "src/index.js",
   "type": "module",
+  "homepage": "https://github.com/nahuelsantos/dont-let-me-die#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/nahuelsantos/dont-let-me-die.git"
-  } ,
+  },
+  "bugs": {
+    "url": "https://github.com/nahuelsantos/dont-let-me-die/issues"
+  },
   "author": "Nahuel <nahuelsantos@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "node ."
   },
-  "bin": "./index.js",
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8"
+  },
+  "bin": "./src/index.js",
   "devDependencies": {
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
@@ -23,6 +31,11 @@
     "eslint-plugin-promise": "^6.0.0",
     "prettier": "^2.7.1"
   },
+  "keywords": [
+    "game",
+    "node",
+    "quiz"
+  ],
   "dependencies": {
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.2",

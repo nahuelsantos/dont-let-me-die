@@ -3,9 +3,15 @@ import inquirer from "inquirer";
 import chalkAnimation from "chalk-animation";
 import figlet from "figlet";
 import { createSpinner } from "nanospinner";
-import { getLives, getMurderWeapon, getVirtualPet, loadGameConfig, loadQuestions, shuffle, sleep} from "./utils.js";
+import { getLives, getMurderWeapon, getVirtualPet, loadQuestions, shuffle, sleep} from "./utils.js";
 
-const gameConfig = await loadGameConfig();
+const gameConfig = {
+  "difficulty": "easy",
+  "lifeGain": 10,
+  "mediumDifficultyOn": 30,
+  "hardDifficultyOn": 60,
+  "winnerOn": 100
+}
 
 let lives = 1;
 let correctAnswers = 0;

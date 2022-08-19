@@ -21,3 +21,6 @@ yarn add chalk chalk-animation figlet inquirer nanospinner node-emoji
 
 ## Questions 
 All the questinos come from [Open Trivia Database](https://opentdb.com/)
+
+## Special thanks to Fireship
+This game is based on the [JavaScript Millionaire CLI Tool](https://github.com/fireship-io/javascript-millionaire) tutorial available in [Fireshop](https://github.com/fireship-io) repository. 

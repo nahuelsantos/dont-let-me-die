@@ -4,9 +4,16 @@
   "description": "Keep your buddy alive!",
   "main": "index.js",
   "type": "module",
-  "repository": "https://github.com/nahuelsantos/dont-let-me-die.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nahuelsantos/dont-let-me-die.git"
+  } ,
   "author": "Nahuel <nahuelsantos@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "bin": "./index.js",
   "devDependencies": {
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",

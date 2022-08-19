@@ -1,6 +1,6 @@
 {
   "name": "dont-let-me-die",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Keep your buddy alive by answering as many questions as you can!",
   "main": "src/index.js",
   "type": "module",

@@ -1,5 +1,5 @@
+import request from "./apiClient.js";
 import emoji from "node-emoji";
-import questions from "./data/questions.js";
 
 export const getVirtualPet = async () => {
   const virtualPets = [
@@ -56,18 +56,11 @@ export const getVirtualPet = async () => {
 };
 
 export const getMurderWeapon = () => {
-  const weapons = [
-    "knife",
-    "gun",
-    "fire",
-    "hocho",
-    "wrench",
-    "hammer"
-  ]
+  const weapons = ["knife", "gun", "fire", "hocho", "wrench", "hammer"];
 
   const randomWeapon = weapons[Math.floor(Math.random() * weapons.length)];
   return emoji.get(randomWeapon);
-}
+};
 
 export const getLives = (lifes) => {
   let lives = "";
@@ -75,25 +68,33 @@ export const getLives = (lifes) => {
     lives += emoji.get("heart");
   }
   return lives;
-}
+};
 
 export const sleep = (ms = 500) =>
   new Promise((resolve, _reject) => setTimeout(resolve, ms));
 
-export const loadQuestions = async (difficulty = "easy") => {
-  return questions().results.filter(q => q.difficulty === difficulty);
-}
+export const getQuestions = async (difficulty = "easy") => {
+  try {
+    const response = await request("/api.php", {
+      query: { amount: 50, difficulty },
+    });
+    return response.results;
+  } catch (error) {
+  }
+};
 
 export const shuffle = (array) => {
-  let currentIndex = array.length; 
+  let currentIndex = array.length;
   let randomIndex;
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
     [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
 
   return array;
-}
+};

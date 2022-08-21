@@ -3,7 +3,8 @@ import inquirer from "inquirer";
 import chalkAnimation from "chalk-animation";
 import figlet from "figlet";
 import { createSpinner } from "nanospinner";
-import { getLives, getMurderWeapon, getVirtualPet, loadQuestions, shuffle, sleep} from "./utils.js";
+import { decode } from 'html-entities';
+import { getLives, getMurderWeapon, getVirtualPet, getQuestions, shuffle, sleep} from "./utils.js";
 
 const gameConfig = {
   "difficulty": "easy",
@@ -15,7 +16,6 @@ const gameConfig = {
 
 let lives = 1;
 let correctAnswers = 0;
-let questions = await loadQuestions();
 let playerName;
 
 const welcome = async () => {
@@ -69,22 +69,20 @@ const handleAnswer = async (isCorrect) => {
   }
 }
 
-const askQuestion = async () => {
+const askQuestion = async (questions) => {
   const questionIndex = Math.floor(Math.random() * questions.length);
   const question = questions[questionIndex];
   const questionName = `question_${questionIndex}`;
-  const options = [...question.incorrect_answers, question.correct_answer];
-
-  // console.log(question);
+  const options = [...question.incorrect_answers.map(q => decode(q)), decode(question.correct_answer)];
   
   const answers = await inquirer.prompt({
     name: `question_${questionIndex}`,
     type: "list",
-    message: question.question,
+    message: decode(question.question),
     choices: shuffle(options),
   });
 
-  return handleAnswer(answers[questionName] === question.correct_answer);
+  return handleAnswer(answers[questionName] === decode(question.correct_answer));
 };
 
 const askName = async () => {
@@ -113,6 +111,7 @@ const winner = async () => {
 
 const play = async () => {
   console.clear();
+  let questions = await getQuestions();
   await welcome();
   await rules();
 
@@ -121,14 +120,14 @@ const play = async () => {
       await askName();
       await winner();
       process.exit(0);
-    } else {
-      await askQuestion();
-      if (correctAnswers === gameConfig.mediumDifficultyOn) {
-        questions = await loadQuestions("medium");
-      } else if (correctAnswers === gameConfig.hardDifficultyOn) {
-        questions = await loadQuestions("hard");
-      } 
-    }
+    } 
+    
+    await askQuestion(questions);
+    if (correctAnswers === gameConfig.mediumDifficultyOn) {
+      questions = await getQuestions("medium");
+    } else if (correctAnswers === gameConfig.hardDifficultyOn) {
+      questions = await getQuestions("hard");
+    } 
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "dont-let-me-die",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Keep your buddy alive by answering as many questions as you can!",
   "main": "src/index.js",
   "type": "module",
@@ -18,7 +18,7 @@
     "start": "node ."
   },
   "engines": {
-    "node": ">=18",
+    "node": ">=16",
     "npm": ">=8"
   },
   "bin": "./src/index.js",
@@ -40,8 +40,10 @@
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.2",
     "figlet": "^1.5.2",
+    "html-entities": "^2.3.3",
     "inquirer": "^9.1.0",
     "nanospinner": "^1.1.0",
-    "node-emoji": "^1.11.0"
+    "node-emoji": "^1.11.0",
+    "node-fetch": "^3.2.10"
   }
 }

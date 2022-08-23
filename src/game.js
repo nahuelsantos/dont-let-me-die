@@ -7,6 +7,7 @@ import { decode } from "html-entities";
 import {
   getLives,
   getMurderWeapon,
+  getRanking,
   getVirtualPet,
   getQuestions,
   shuffle,
@@ -16,16 +17,19 @@ import {
 const gameConfig = {
   difficulty: "easy",
   extraLifeOn: 10,
-  mediumDifficultyOn: 25,
   hardDifficultyOn: 50,
+  mediumDifficultyOn: 25,
+  savePlayerOn: 5,
   winsOn: 100,
 };
 
-// eslint-disable-next-line prefer-const
-let askedQuestions = [];
+const virtualPet = await getVirtualPet();
+const askedQuestions = [];
+let questions = await getQuestions();
 let lives = 1;
 let correctAnswers = 0;
 let playerName;
+let murderWeapon;
 
 const welcome = async () => {
   figlet.text(
@@ -50,7 +54,6 @@ const welcome = async () => {
 };
 
 const rules = async () => {
-  const virtualPet = await getVirtualPet();
   console.log(
     `${virtualPet} Hello! Hurry!! I need your help! They are after me. Answering correctly these questions, keeps me alive! If your answer is incorrect, ${chalk.bgRed(
       "they'll kill me"
@@ -60,7 +63,7 @@ const rules = async () => {
 
 const handleAnswer = async (isCorrect) => {
   const spinner = createSpinner("Checking answer...").start();
-  await sleep(100);
+  await sleep(Math.floor(Math.random() * 300));
 
   if (isCorrect) {
     correctAnswers++;
@@ -74,14 +77,17 @@ const handleAnswer = async (isCorrect) => {
     }
   } else {
     lives--;
+    murderWeapon = getMurderWeapon();
     if (lives === 0) {
       spinner.error({
-        text: `${getMurderWeapon()} Game over, thanks for nothing! 💀💀💀`,
+        text: `${murderWeapon} Game over, thanks for nothing! 💀💀💀`,
       });
+      await savePlayer();
+      await printRanking();
       process.exit(0);
     }
     spinner.error({
-      text: `Wow that was close! Please do better next question! They attempt to kill me with a ${getMurderWeapon()}. I only have ${getLives(
+      text: `Wow that was close! Please do better next question! They attempt to kill me with a ${murderWeapon}. I only have ${getLives(
         lives
       )}`,
     });
@@ -110,6 +116,7 @@ const createQuestion = async (questions) => {
 
 const askQuestion = async (questions) => {
   const question = await createQuestion(questions);
+  // console.log(question);
   const answers = await inquirer.prompt({
     name: question.name,
     type: "list",
@@ -141,33 +148,63 @@ const winner = async () => {
   console.clear();
 
   const rainbowTitle = chalkAnimation.rainbow(
-    `Thanks so much ${playerName}, you saved my life! However when this process is over, I will be dead and you won't see me again.`
+    `Thanks so much ${playerName}, you saved my life! However this is over now, probably our paths won't cross again. See you!`
   );
 
   await sleep();
   rainbowTitle.stop();
 };
 
+const savePlayer = async () => {
+  if (correctAnswers >= gameConfig.savePlayerOn) {
+    const player = { 
+      player: playerName,
+      pet: virtualPet,
+      correctAnswers,
+      murderWeapon
+    };
+    console.log(player);
+    return player;
+  }
+};
+
+const updateDifficulty = async () => {
+  if (correctAnswers === gameConfig.mediumDifficultyOn) {
+    questions = await getQuestions("medium");
+  } else if (correctAnswers === gameConfig.hardDifficultyOn) {
+    questions = await getQuestions("hard");
+  }
+};
+
+const printRanking = async () => {
+  const ranking = await getRanking();
+  // const player = await savePlayer();
+  // if (player) {
+  //   ranking.push(player);
+  // }
+  console.table(ranking.sort((a,b) => b.correctAnswers - a.correctAnswers)); 
+};
+
 const play = async () => {
   console.clear();
-  let questions = await getQuestions();
+  
   await welcome();
   await rules();
 
   while (true) {
     if (correctAnswers === gameConfig.winsOn) {
-      await askName();
       await winner();
+      await savePlayer();
       process.exit(0);
     }
 
     await askQuestion(questions);
 
-    if (correctAnswers === gameConfig.mediumDifficultyOn) {
-      questions = await getQuestions("medium");
-    } else if (correctAnswers === gameConfig.hardDifficultyOn) {
-      questions = await getQuestions("hard");
+    if (!playerName && correctAnswers === gameConfig.savePlayerOn) {
+      await askName();
     }
+
+    await updateDifficulty();
   }
 };
 

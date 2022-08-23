@@ -83,6 +83,35 @@ export const getQuestions = async (difficulty = "easy") => {
   }
 };
 
+
+export const savePlayer = async (player) => {
+  try {
+    const response = await request("localhost:5000/api/players", {
+      method: "POST",
+      body: JSON.stringify(player),
+	    headers: {'Content-Type': 'application/json'}
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+  }
+};
+
+export const getRanking = async () => {
+  try {
+    // const response = await request("localhost:5000/api/players");
+    const response = [
+      { player: 'Stan', pet: '🐕', correctAnswers: 12, murderWeapon: '🔥' },
+      { player: 'Elaine', pet: '🐪', correctAnswers: 8, murderWeapon: '🔪' },
+      { player: 'Carla', pet: '🐠', correctAnswers: 9, murderWeapon: '🔧' },
+      { player: 'Otis', pet: '🐇', correctAnswers: 5, murderWeapon: '🔫' },
+      { player: 'Meathook', pet: '🐋', correctAnswers: 6, murderWeapon: '🔨' }
+    ];
+    return response;
+  } catch (error) {
+  }
+};
+
 export const shuffle = (array) => {
   let currentIndex = array.length;
   let randomIndex;

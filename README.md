@@ -24,4 +24,4 @@ You will be prompted with questions. If you answer them correctly, your pet rema
 All the questions are fetched from [Open Trivia Database](https://opentdb.com/).
 
 ## Special thanks to Fireship
-This game is based on the [JavaScript Millionaire CLI Tool](https://github.com/fireship-io/javascript-millionaire) tutorial. Check [Fireshop](https://github.com/fireship-io) repository for more cool things. 
+This game is based on the [JavaScript Millionaire CLI Tool](https://github.com/fireship-io/javascript-millionaire) tutorial. Check [Fireship](https://github.com/fireship-io) repository for more cool things. 

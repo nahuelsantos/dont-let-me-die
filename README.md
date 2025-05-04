@@ -1,6 +1,7 @@
-[![JavaScript](https://img.shields.io/badge/ES6-00ADD8?style=for-the-badge&logo=javascript&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/nahuelsantos/dont-let-me-die/release-package.yaml?branch=main&style=for-the-badge)](https://github.com/nahuelsantos/dont-let-me-die/actions) 
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F0DB4F?style=for-the-badge&logo=javascript&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Node.js](https://img.shields.io/badge/Node.js-16+-84ba64?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/v/release/nahuelsantos/dont-let-me-die?style=for-the-badge)](https://github.com/nahuelsantos/dont-let-me-die/releases) 
 
 # dont-let-me-die
 A kind of fancy CLI quiz game. Keep your pet alive as much as you can! 

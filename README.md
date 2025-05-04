@@ -1,4 +1,4 @@
-[![JavaScript](https://img.shields.io/badge/JS+-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![JavaScript](https://img.shields.io/badge/ES6-00ADD8?style=for-the-badge&logo=javascript&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/nahuelsantos/dont-let-me-die/release-package.yaml?branch=main&style=for-the-badge)](https://github.com/nahuelsantos/dont-let-me-die/actions) 
 

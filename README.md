@@ -1,5 +1,5 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F0DB4F?style=for-the-badge&logo=javascript&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Node.js](https://img.shields.io/badge/Node.js-16+-84ba64?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Node.js](https://img.shields.io/badge/Node.js-16+-84ba64?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![License MIT](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Release](https://img.shields.io/github/v/release/nahuelsantos/dont-let-me-die?style=for-the-badge)](https://github.com/nahuelsantos/dont-let-me-die/releases) 
 
